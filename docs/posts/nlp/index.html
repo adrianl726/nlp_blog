@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.5.56">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -241,22 +241,22 @@ window.Quarto = {
 
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="nlp.png" class="img-fluid figure-img"></p>
+<p><img src="thumbnail.png" class="img-fluid figure-img"></p>
 <figcaption>Source: Google</figcaption>
 </figure>
 </div>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Natural Language Processing (NLP) is a fascinating field of Machine Learning that focuses on enabling machines to understand, interpret, and generate human language. From facilitating translation tools like Google Translate to powering voice assistance like Siri and Alexa, NLP’s influence on the current technological landascape is indisputable and substantial. With the ever growing interest and expanding development in artificial intelligence, a lot of aspiring engineers and scientists are looking to venture into the lucrative NLP field. However, before we learn to perform all the fancy tasks such as text generations and summarizations, we must start from the fundamentals and ask ourselves a question:</p>
+<p>Natural Language Processing (NLP) is a fascinating field of Machine Learning that focuses on enabling machines to understand, interpret, and generate human language. From facilitating translation tools like Google Translate to powering voice assistance like Siri and Alexa, NLP’s influence on the current technological landscape is indisputable and substantial. With the ever-growing interest and expanding development in artificial intelligence, a lot of aspiring engineers and scientists are looking to venture into the lucrative NLP field. However, before we learn to perform all the fancy tasks such as text generation and summarization, we must start from the fundamentals and ask ourselves a question:</p>
 <p><strong>How can we bridge the gap between human communication and machine processing?</strong></p>
-<p>One problem arises from this question is that computers do not understand language the way humans do. They are not wired to comprehend words and write essays like we do. Instead, they operate on numbers. All the NLP models are driven by mathematical algorithms and formulae. Thus, encoding text into numerical representations becomes the key to computers learning human language. By converting words, sentences, or entire documents into numbers, NLP models can perform a wide range of tasks like analyzing patterns, extracting meanings, and generating responses.</p>
-<p>This blog will introduce and guide you through different methods and tools to encode texts, thus providing you a gateway to using NLP models.</p>
+<p>One problem that arises from this question is that computers do not understand language the way humans do. They are not wired to comprehend words and write essays like we do. Instead, they operate on numbers. All the NLP models are driven by mathematical algorithms and formulae. Thus, encoding text into numerical representations becomes the key to computers learning human language. By converting words, sentences, or entire documents into numbers, NLP models can perform a wide range of tasks like analyzing patterns, extracting meanings, and generating responses.</p>
+<p>This blog will introduce and guide you through different methods and tools to encode texts, thus providing you with a gateway to performing NLP tasks.</p>
 </section>
 <section id="challenges-of-textual-data" class="level2">
 <h2 class="anchored" data-anchor-id="challenges-of-textual-data">Challenges of Textual Data</h2>
 <p>Before we learn about different ways to encode texts, we need to acknowledge the challenges associated with the intricacy of human language. Language is messy and unpredictable. Although there are sets of grammatical rules that govern a language, humans are prone to making mistakes yet still able to convey their messages. For example, “How is you doin” is grammatically incorrect but we know it means “How are you doing”. Thus, language is not strictly restricted by an algorithm, contrary to how computers operate.</p>
-<p>Moreover, not all words have meanings. Auxiliary verbs like “is” and “am” do not contribute or change the message a sentence wants to convey. They are meaningless outside of abiding by grammatical rules. There is also a hierarchy of meanings in a sentence. Certain words can mean more than others. Consider the sentence “We are happy”. Although “we” and “happy” play their roles in conveying our emotions, “happy” is a more important word as it tells the key emotion.</p>
-<p>To complicate matters more, a word can have different meanings depending on the context. Even more confusingly, some words can have completely opposite meanings. For example, the word “left” in the sentence “We just left” means departed. However, it means staying when the sentence is “We are the only one left”. This shows that contexts can alter meanings of the same word drastically.</p>
+<p>Moreover, not all words have meanings. Auxiliary verbs like “is” and “am” do not contribute to or change the message a sentence wants to convey. They are meaningless outside of abiding by grammatical rules. There is also a hierarchy of meanings in a sentence. Certain words can mean more than others. Consider the sentence “We are happy”. Although “we” and “happy” play their roles in conveying our emotions, “happy” is a more important word as it tells the key emotion.</p>
+<p>To complicate matters more, a word can have different meanings depending on the context. Even more confusingly, some words can have completely opposite meanings. For example, the word “left” in the sentence “We just left” means departed. However, it means staying when the sentence is “We are the only one left”. This shows that contexts can alter the meanings of the same word drastically.</p>
 <div style="text-align:center;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -317,7 +317,7 @@ Table&nbsp;1: BoW representations using word counts
 </figcaption>
 </figure>
 </div>
-<p>And in the case of measuring each word by its presence as seen in <a href="#tbl-boWbinary" class="quarto-xref">Table&nbsp;2</a>, BoW uses binary values 0 and 1 to represent each word, where 0 implies absence and 1 implies presence. Note that the words ‘the’ and ‘cat’ are represented by 1 instead of 2 since we are using binary representations.</p>
+<p>In the case of measuring each word by its presence as seen in <a href="#tbl-boWbinary" class="quarto-xref">Table&nbsp;2</a>, BoW uses binary values 0 and 1 to represent each word, where 0 implies absence and 1 implies presence. Note that the words ‘the’ and ‘cat’ are represented by 1 instead of 2 since we are using binary representations.</p>
 <div id="tbl-boWbinary" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <div aria-describedby="tbl-boWbinary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -378,7 +378,7 @@ Table&nbsp;2: BoW representations using binary indicators
 <div id="tbl-sklearn" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="1">
 <figure class="quarto-float quarto-float-tbl figure">
 <div aria-describedby="tbl-sklearn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <div>
 
 
@@ -454,12 +454,12 @@ Table&nbsp;3: BoW results from CountVectorizer
 </section>
 <section id="tf-idf" class="level3">
 <h3 class="anchored" data-anchor-id="tf-idf">TF-IDF</h3>
-<p>TF-IDF, which stands for term frequency-inverse document frequency, is another popular method to encode text. It is a measure of relevance of a word in a document. The computation can be broken down into two parts: term frequency and inverse document frequency.</p>
+<p>TF-IDF, which stands for term frequency-inverse document frequency, is another popular method to encode text. It is a measure of the relevance of a word in a document. The computation can be broken down into two parts: term frequency and inverse document frequency.</p>
 <p><strong>Term Frequency (TF)</strong><br>
 The term frequency is the count of a given word <span class="math inline">\(w\)</span> in a given document <span class="math inline">\(d\)</span>, divided by the total number of words in document <span class="math inline">\(d\)</span>.</p>
 <p><span class="math display">\[TF = \frac{\text{Number of word $w$ in document $d$}}{\text{Total number of words in document $d$}}\]</span></p>
 <p><strong>Inverse document frequency (IDF)</strong><br>
-The inverse document frequency is to penalize words that are too common across all documents. For example, auxiliary verbs like ‘is’ are weighed less as the result. In return, this gives rise to rarer words that possibly carry more meaning and importance.</p>
+The inverse document frequency is to penalize words that are too common across all documents. For example, auxiliary verbs like ‘is’ are weighed less as a result. In return, this gives rise to rarer words that possibly carry more meaning and importance.</p>
 <p><span class="math display">\[IDF = \log\left(\frac{\text{Total number of documents}}{\text{Number of documents containing word $w$}}\right)\]</span></p>
 <p><strong>Combining both TF and IDF</strong><br>
 To have our TF-IDF representation, we multiply both terms to have the following formula:</p>
@@ -485,7 +485,7 @@ To have our TF-IDF representation, we multiply both terms to have the following 
 <div id="tbl-tfidf" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="2">
 <figure class="quarto-float quarto-float-tbl figure">
 <div aria-describedby="tbl-tfidf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
 
@@ -557,7 +557,7 @@ Table&nbsp;4: TF-IDF results from TfidfVectorizer
 </figure>
 </div>
 </div>
-<p>TF-IDF is a step-up from BoW as it recognizes what makes a word important in a document. However, similar to BoW, it also disregards the order and context of words. Thus, we need some alternatives that can compute an even better representation for words.</p>
+<p>TF-IDF is a step up from BoW as it recognizes what makes a word important in a document. However, similar to BoW, it also disregards the order and context of words. Thus, we need some alternatives that can compute an even better representation for words.</p>
 </section>
 </section>
 <section id="word-embeddings" class="level2">
@@ -606,8 +606,8 @@ Figure&nbsp;3: Illustration of Skipgram algorithm
 </div>
 </div>
 <p>After multiple iterations in the training process, Word2Vec will use the learned weights in the neural network from either of the approaches to construct the word embeddings for each word.</p>
-<p>Applying Word2Vec in Python is made possible with the package <code>Gensim</code> <span class="citation" data-cites="rehurek2011gensim">[<a href="#ref-rehurek2011gensim" role="doc-biblioref">4</a>]</span>. As seen in <a href="#lst-gensim" class="quarto-xref">Listing&nbsp;1</a>, <code>Gensim</code>‘s <code>Word2Vec</code> takes in a list of lists to generate the word embeddings. Note that the <code>sg</code> argument in the function lets you choose between CBoW and skipgram, where 0 and 1 corresponds to CBoW and skipgram respectively. The argument <code>min_count</code> tells the model to ignore words that have a fewer count than this minimum. After training <code>Word2Vec</code> on our sample text, we can take a quick look into how word embeddings look like for the word ’technology’ in <a href="#lst-gensim" class="quarto-xref">Listing&nbsp;1</a>.</p>
-<div id="79c944a2" class="cell" data-execution_count="3">
+<p>Applying Word2Vec in Python is made possible with the package <code>Gensim</code> <span class="citation" data-cites="rehurek2011gensim">[<a href="#ref-rehurek2011gensim" role="doc-biblioref">4</a>]</span>. As seen in <a href="#lst-gensim" class="quarto-xref">Listing&nbsp;1</a>, <code>Gensim</code>‘s <code>Word2Vec</code> takes in a list of lists to generate the word embeddings. Note that the <code>sg</code> argument in the function lets you choose between CBoW and skipgram, where 0 and 1 correspond to CBoW and skipgram respectively. The argument <code>min_count</code> tells the model to ignore words that have a lower count than this minimum. After training <code>Word2Vec</code> on our sample text, we can take a quick look into what word embeddings look like for the word ’technology’ in <a href="#lst-gensim" class="quarto-xref">Listing&nbsp;1</a>.</p>
+<div id="91d8aa50" class="cell" data-execution_count="3">
 <div id="lst-gensim" class="python cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-gensim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -666,8 +666,8 @@ Listing&nbsp;1: This code demonstrates extracting word embedding from the word �
 </div>
 </div>
 <p>As it turns out, the word embedding for ‘technology’ is a high-dimensional vector. However, the values are much more ambiguous than the previous representations we have learned earlier. Let’s try to translate these embeddings into more comprehensible results.</p>
-<p>As mentioned before, word embeddings are powerful at capturing similarities in words. We are putting this to test in <a href="#lst-similarity" class="quarto-xref">Listing&nbsp;2</a>, where we ask <code>Word2Vec</code> what the most similar word to ‘technology’ is. The result shows that ‘advancement’ is the closest word choice. This is a reasonable pick since we often use the phrase ‘technological advancement’ when describing new technological milestones.</p>
-<div id="1cb750c7" class="cell" data-execution_count="4">
+<p>As mentioned before, word embeddings are powerful at capturing similarities in words. We are putting this to the test in <a href="#lst-similarity" class="quarto-xref">Listing&nbsp;2</a>, where we ask <code>Word2Vec</code> what the most similar word to ‘technology’ is. The result shows that ‘advancement’ is the closest word choice. This is a reasonable pick since we often use the phrase ‘technological advancement’ when describing new technological milestones.</p>
+<div id="dfc303bc" class="cell" data-execution_count="4">
 <div id="lst-similarity" class="python cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-similarity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -682,12 +682,12 @@ Listing&nbsp;2: This code shows what Word2Vec thinks the most similar word to �
 <pre><code>('advancement', 0.3503554165363312)</code></pre>
 </div>
 </div>
-<p>Word2Vec is a big improvement from traditional methods. Nevertheless, it still has flaws such as failing to recognize unknown words. Since Word2Vec is a pre-trained model, its linguistic knowledge mainly bases on the data corpus it was trained on. Unfortunately, language changes over time as new words continue to pop up in dictionaries every year. Thus, it is only a matter of time that Word2Vec will become outdated. Another limitation of Word2Vec is that it struggles to differentiate between words with multiple meanings. Since Word2Vec generates a word embedding for each unique word, it fails to acknowledge that a word can carry separate meanings. This can be problematic especially when words can have exact opposite meanings given different contexts.</p>
+<p>Word2Vec is a big improvement from traditional methods. Nevertheless, it still has flaws such as failing to recognize unknown words. Since Word2Vec is a pre-trained model, its linguistic knowledge is mainly based on the data corpus it was trained on. Unfortunately, language changes over time as new words continue to pop up in dictionaries every year. Thus, it is only a matter of time before Word2Vec becomes outdated. Another limitation of Word2Vec is its struggle to differentiate between words with multiple meanings. Since Word2Vec generates a word embedding for each unique word, it fails to acknowledge that a word can carry separate meanings. This can be problematic especially when words can have exact opposite meanings given different contexts.</p>
 </section>
 </section>
 <section id="contextualized-embeddings" class="level2">
 <h2 class="anchored" data-anchor-id="contextualized-embeddings">Contextualized Embeddings</h2>
-<p>Similar to word embeddings, contextualized embeddings also encode texts into high-dimensional vectors. They build on top of the existing framework of word embeddings by conditioning each word on its context. When obtaining the contextualized embeddings of a word, it includes neighbouring words in the calculation. As such, same words that appear in different contexts will have different embeddings. This provides a solution to the limitations of word embeddings as it learns the word based on the context surrounding it.</p>
+<p>Similar to word embeddings, contextualized embeddings also encode texts into high-dimensional vectors. They refine the existing framework of word embeddings by conditioning each word on its context. When obtaining the contextualized embeddings of a word, it includes neighboring words in the calculation. As such, the same words that appear in different contexts will have different embeddings. This provides a solution to the limitations of word embeddings as it learns the word based on the context surrounding it.</p>
 <p>While there are several architectures, such as ELMo and GPT-2, that are trained on obtaining contextualized embeddings, we will be focusing on learning the BERT model in this section.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -698,21 +698,21 @@ Listing&nbsp;2: This code shows what Word2Vec thinks the most similar word to �
 <section id="bert" class="level3">
 <h3 class="anchored" data-anchor-id="bert">BERT</h3>
 <p>BERT <span class="citation" data-cites="devlin2019bertpretrainingdeepbidirectional">[<a href="#ref-devlin2019bertpretrainingdeepbidirectional" role="doc-biblioref">5</a>]</span>, which stands for Bidirectional encoder representations from transformers, is a transformer-based encoder model developed in 2018 by researchers at Google <span class="citation" data-cites="Devlin_Chang_2018">[<a href="#ref-Devlin_Chang_2018" role="doc-biblioref">6</a>]</span>.</p>
-<p>It is bidirectional in the sense that it captures the both left and right contexts of a given word. For example, consider the sentence <em>“You exist in the context of all in which you live”</em> and the target word <em>“context”</em>. The bidirectional nature of BERT ensures that both the left context, <em>“You exist in the”</em>, and the right context, <em>“of all in which you live”</em>, are taken into consideration.</p>
-<p>Transformer <span class="citation" data-cites="vaswani2017attention">[<a href="#ref-vaswani2017attention" role="doc-biblioref">7</a>]</span>, in this context, is a deep-learning architecture that revolutionalizes the field of NLP through its emphasis on contextualized representations. Its usage ranges from language translations to text generations. As shown in <a href="#fig-transformer" class="quarto-xref">Figure&nbsp;4</a>, transformer is powered by two separate mechanisms: an encoder system that reads an input text and produces a corresponding vector representation, and a decoder system that receives the vector representation and output sentences that are useful in tasks like text generation <span class="citation" data-cites="Hoque_2024">[<a href="#ref-Hoque_2024" role="doc-biblioref">8</a>]</span>. Despite BERT being a transformer-based model, it differs from a typical transformer as BERT only leverages the encoder mechanism of transformers since its goal is to create contextualized embeddings.</p>
+<p>It is bidirectional in the sense that it captures both the left and right contexts of a given word. For example, consider the sentence <em>“You exist in the context of all in which you live”</em> and the target word <em>“context”</em>. The bidirectional nature of BERT ensures that both the left context, <em>“You exist in the”</em>, and the right context, <em>“of all in which you live”</em>, are taken into account.</p>
+<p>Transformer <span class="citation" data-cites="vaswani2017attention">[<a href="#ref-vaswani2017attention" role="doc-biblioref">7</a>]</span>, in this context, is a deep-learning architecture that revolutionalizes the field of NLP through its emphasis on contextualized representations. Its usage ranges from language translations to text generations. As shown in <a href="#fig-transformer" class="quarto-xref">Figure&nbsp;4</a>, a transformer is powered by two separate mechanisms: an encoder system that reads an input text and produces a corresponding vector representation, and a decoder system that receives the vector representation and output sentences that are useful in tasks like text generation <span class="citation" data-cites="Hoque_2024">[<a href="#ref-Hoque_2024" role="doc-biblioref">8</a>]</span>. Despite BERT being a transformer-based model, it differs from a typical transformer as BERT only leverages the encoder mechanism of transformers since its goal is to create contextualized embeddings.</p>
 <div id="fig-transformer" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-transformer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="transformer.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-transformer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: An oversimplified visualization of encoder-decoder mechanism of a transformer. (Source: KiKaBeN)
+Figure&nbsp;4: An oversimplified visualization of the encoder-decoder mechanism of a transformer. (Source: KiKaBeN)
 </figcaption>
 </figure>
 </div>
 <p>To implement BERT in Python, we enlist the help of the Hugging Face library <span class="citation" data-cites="wolf2020huggingfacestransformersstateoftheartnatural">[<a href="#ref-wolf2020huggingfacestransformersstateoftheartnatural" role="doc-biblioref">9</a>]</span>. This implementation requires the packages <code>transformers</code> and <code>torch</code>. To install both packages, use the commands <code>pip install transformers</code> and <code>pip install torch</code> respectively.</p>
-<p>Before producing BERT embeddings, we have to tokenize the input text with <code>BertTokenizer</code> in <a href="#lst-token" class="quarto-xref">Listing&nbsp;3</a>. Tokenization is a process where we break down a text into smaller chunks, similar to extracting individual words from sentences. However, tokenization does not necessarily return a list of words as it aims to deconstruct texts in a way that facilitates the embedding computations. From the result of <a href="#lst-token" class="quarto-xref">Listing&nbsp;3</a>, we see that <code>BertTokenizer</code> generates 33 tokens from the input text and the character or word that each token represents.</p>
-<div id="bd0f7afc" class="cell" data-execution_count="5">
+<p>Before producing BERT embeddings, we have to tokenize the input text with <code>BertTokenizer</code> in <a href="#lst-token" class="quarto-xref">Listing&nbsp;3</a>. Tokenization is a process where we break down a text into smaller chunks, similar to extracting individual words from sentences. However, tokenization does not necessarily return a list of words as it aims to deconstruct texts in a way that facilitates the embedding computations. From the result of <a href="#lst-token" class="quarto-xref">Listing&nbsp;3</a>, we see that <code>BertTokenizer</code> generates 33 tokens from the input text and the character or word each token represents.</p>
+<div id="23762785" class="cell" data-execution_count="5">
 <div id="lst-token" class="python cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-token-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -743,8 +743,8 @@ Listing&nbsp;3: This code shows how BERT tokenization works.
 ['[CLS]', 'artificial', 'intelligence', 'is', 'revolution', '##izing', 'industries', ',', 'making', 'processes', 'faster', 'and', 'more', 'efficient', '.', 'despite', 'its', 'rapid', 'advancement', '##s', ',', 'human', 'creativity', 'and', 'empathy', 'remain', 'ir', '##re', '##pl', '##ace', '##able', '.', '[SEP]']</code></pre>
 </div>
 </div>
-<p>In <a href="#lst-bert" class="quarto-xref">Listing&nbsp;4</a>, we input the tokens into the pre-trained <code>BertModel</code> and reutrn the BERT embedding for the token ‘artificial’. The resulting BERT embedding for ‘artificial’ is a 768-dimensional vector.</p>
-<div id="c232dc89" class="cell" data-execution_count="6">
+<p>In <a href="#lst-bert" class="quarto-xref">Listing&nbsp;4</a>, we input the tokens into the pre-trained <code>BertModel</code> and return the BERT embedding for the token ‘artificial’. The resulting BERT embedding for ‘artificial’ is a 768-dimensional vector.</p>
+<div id="fa6639b0" class="cell" data-execution_count="6">
 <div id="lst-bert" class="python cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-bert-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -775,7 +775,13 @@ First 10 values in the embedding: tensor([ 0.1357,  0.3550, -0.1805,  0.1837,  0
          0.2871, -0.8610])</code></pre>
 </div>
 </div>
+<p>If you have followed the demonstration above, you might have noticed the significant time and size the pre-trained model takes when initially loaded. The heavy computational cost is a noticeable drawback of BERT. If you aim to train an NLP model on simple textual data while preserving efficiency, the previously introduced models will be a better choice to encode the data.</p>
 </section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Encoding text into numbers is a foundational step in NLP. The choice of encoding method, whether it is simple approaches like Bag of Words or advanced contextual embeddings like BERT, significantly impacts the performance and outcomes of NLP tasks. Each method has its strengths and limitations. Thus, the selection process of text encoders is crucial to achieving the desired results.</p>
+<p>The methods introduced in this blog are just the tip of the iceberg. As the field of NLP continues to evolve, discoveries and advancements in NLP are inevitable. Thus, I encourage you to experiment with different encoding techniques and enrich your NLP experience. Whether you are building a sentiment analysis tool, a recommendation system, or a machine translation model, exploring and adapting encoding strategies to suit your project’s unique requirements is key to success. By understanding the power of numerical representations, you can unlock the full potential of NLP and create solutions that bridge the gap between human language and machine understanding.</p>
 </section>
 <section id="references" class="level2">
 
