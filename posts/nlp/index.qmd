@@ -13,21 +13,21 @@ csl: diabetologia.csl
 
 ## Introduction
 
-Natural Language Processing (NLP) is a fascinating field of Machine Learning that focuses on enabling machines to understand, interpret, and generate human language. From facilitating translation tools like Google Translate to powering voice assistance like Siri and Alexa, NLP's influence on the current technological landascape is indisputable and substantial. With the ever growing interest and expanding development in artificial intelligence, a lot of aspiring engineers and scientists are looking to venture into the lucrative NLP field. However, before we learn to perform all the fancy tasks such as text generations and summarizations, we must start from the fundamentals and ask ourselves a question:  
+Natural Language Processing (NLP) is a fascinating field of Machine Learning that focuses on enabling machines to understand, interpret, and generate human language. From facilitating translation tools like Google Translate to powering voice assistance like Siri and Alexa, NLP's influence on the current technological landscape is indisputable and substantial. With the ever-growing interest and expanding development in artificial intelligence, a lot of aspiring engineers and scientists are looking to venture into the lucrative NLP field. However, before we learn to perform all the fancy tasks such as text generation and summarization, we must start from the fundamentals and ask ourselves a question:  
 
 **How can we bridge the gap between human communication and machine processing?**
 
-One problem arises from this question is that computers do not understand language the way humans do. They are not wired to comprehend words and write essays like we do. Instead, they operate on numbers. All the NLP models are driven by mathematical algorithms and formulae. Thus, encoding text into numerical representations becomes the key to computers learning human language. By converting words, sentences, or entire documents into numbers, NLP models can perform a wide range of tasks like analyzing patterns, extracting meanings, and generating responses. 
+One problem that arises from this question is that computers do not understand language the way humans do. They are not wired to comprehend words and write essays like we do. Instead, they operate on numbers. All the NLP models are driven by mathematical algorithms and formulae. Thus, encoding text into numerical representations becomes the key to computers learning human language. By converting words, sentences, or entire documents into numbers, NLP models can perform a wide range of tasks like analyzing patterns, extracting meanings, and generating responses. 
 
-This blog will introduce and guide you through different methods and tools to encode texts, thus providing you a gateway to using NLP models.
+This blog will introduce and guide you through different methods and tools to encode texts, thus providing you with a gateway to performing NLP tasks.
 
 ## Challenges of Textual Data
 
 Before we learn about different ways to encode texts, we need to acknowledge the challenges associated with the intricacy of human language. Language is messy and unpredictable. Although there are sets of grammatical rules that govern a language, humans are prone to making mistakes yet still able to convey their messages. For example, "How is you doin" is grammatically incorrect but we know it means "How are you doing". Thus, language is not strictly restricted by an algorithm, contrary to how computers operate.
 
-Moreover, not all words have meanings. Auxiliary verbs like "is" and "am" do not contribute or change the message a sentence wants to convey. They are meaningless outside of abiding by grammatical rules. There is also a hierarchy of meanings in a sentence. Certain words can mean more than others. Consider the sentence "We are happy". Although "we" and "happy" play their roles in conveying our emotions, "happy" is a more important word as it tells the key emotion. 
+Moreover, not all words have meanings. Auxiliary verbs like "is" and "am" do not contribute to or change the message a sentence wants to convey. They are meaningless outside of abiding by grammatical rules. There is also a hierarchy of meanings in a sentence. Certain words can mean more than others. Consider the sentence "We are happy". Although "we" and "happy" play their roles in conveying our emotions, "happy" is a more important word as it tells the key emotion. 
 
-To complicate matters more, a word can have different meanings depending on the context. Even more confusingly, some words can have completely opposite meanings. For example, the word "left" in the sentence "We just left" means departed. However, it means staying when the sentence is "We are the only one left". This shows that contexts can alter meanings of the same word drastically.
+To complicate matters more, a word can have different meanings depending on the context. Even more confusingly, some words can have completely opposite meanings. For example, the word "left" in the sentence "We just left" means departed. However, it means staying when the sentence is "We are the only one left". This shows that contexts can alter the meanings of the same word drastically.
 
 ::: {style="text-align:center;"}
 ![Context matters!!! (Source: Kamala Harris)](context.gif)
@@ -35,13 +35,11 @@ To complicate matters more, a word can have different meanings depending on the 
 
 Hence, making computers comprehend language like we do is far from a simple task. Encoding words with numerical representations is a work of art as it determines how well a model can understand us. 
 
-## Approaches to Encoding Texts
+The sections below will cover different approaches to encoding texts including traditional methods like Bag-of-Words (BoW) and TF-IDF, word embeddings, and contextualized embeddings. 
 
-This section will cover different approaches to encoding texts including traditional methods like Bag-of-Words (BoW) and TF-IDF, word embeddings, and contextualized embeddings. 
+## Traditional Methods
 
-### Traditional Methods
-
-#### **Bag-of-Words (BoW)**
+### Bag-of-Words (BoW)
 BoW is one of the most popular encoding methods. It encodes each unique word from all input documents with a number based on their count or presence in their respective document.
 
 Consider the example below:
@@ -61,7 +59,7 @@ In the case of encoding each word with its count, the BoW model will transform t
 
 : BoW representations using word counts {#tbl-boWcount}
 
-And in the case of measuring each word by its presence as seen in @tbl-boWbinary, BoW uses binary values 0 and 1 to represent each word, where 0 implies absence and 1 implies presence. Note that the words 'the' and 'cat' are represented by 1 instead of 2 since we are using binary representations.
+In the case of measuring each word by its presence as seen in @tbl-boWbinary, BoW uses binary values 0 and 1 to represent each word, where 0 implies absence and 1 implies presence. Note that the words 'the' and 'cat' are represented by 1 instead of 2 since we are using binary representations.
 
 |the|bird|is |cat|and|dog|hate|each|no |other|
 |:-:|:--:|:-:|:-:|:-:|:-:|:--:|:--:|:-:|:---:|
@@ -94,8 +92,8 @@ bow_df
 
 Although the BoW method is as intuitive and self-explanatory as it seems, it is far from a perfect model as it discards the word order in the original document. It disregards how words can form meaningful word phrases and change their meanings with respect to the context.
 
-#### **TF-IDF**
-TF-IDF, which stands for term frequency-inverse document frequency, is another popular method to encode text. It is a measure of relevance of a word in a document. The computation can be broken down into two parts: term frequency and inverse document frequency.
+### TF-IDF
+TF-IDF, which stands for term frequency-inverse document frequency, is another popular method to encode text. It is a measure of the relevance of a word in a document. The computation can be broken down into two parts: term frequency and inverse document frequency.
 
 **Term Frequency (TF)**  
 The term frequency is the count of a given word $w$ in a given document $d$, divided by the total number of words in document $d$. 
@@ -103,7 +101,7 @@ The term frequency is the count of a given word $w$ in a given document $d$, div
 $$TF = \frac{\text{Number of word $w$ in document $d$}}{\text{Total number of words in document $d$}}$$
 
 **Inverse document frequency (IDF)**  
-The inverse document frequency is to penalize words that are too common across all documents. For example, auxiliary verbs like 'is' are weighed less as the result. In return, this gives rise to rarer words that possibly carry more meaning and importance. 
+The inverse document frequency is to penalize words that are too common across all documents. For example, auxiliary verbs like 'is' are weighed less as a result. In return, this gives rise to rarer words that possibly carry more meaning and importance. 
 
 $$IDF = \log\left(\frac{\text{Total number of documents}}{\text{Number of documents containing word $w$}}\right)$$
 
@@ -112,7 +110,7 @@ To have our TF-IDF representation, we multiply both terms to have the following 
 
 $$TF\text{-}IDF = TF \times IDF$$
 
-Now, let's revisit our example with TF-IDF in Python [@van1995python]. Luckily, the `scikit-learn` package [@scikit-learn] also has a function for TF-IDF called `TfidfVectorizer`. As shown in the first row in @tbl-tfidf, the TF-IDF representation for 'the' is smaller than 'cat' even though they both have the same BoW representations in @tbl-sklearn. This is the result of the compensation from IDF as 'the' appears too much across documents. 
+Now, let's revisit our example with TF-IDF in Python. Luckily, the `scikit-learn` package [@scikit-learn] also has a function for TF-IDF called `TfidfVectorizer`. As shown in the first row in @tbl-tfidf, the TF-IDF representation for 'the' is smaller than 'cat' even though they both have the same BoW representations in @tbl-sklearn. This is the result of the compensation from IDF as 'the' is too common among existing documents. 
 
 ```{python}
 #| label: tbl-tfidf
@@ -135,15 +133,15 @@ tfidf_df = pd.DataFrame(
 tfidf_df
 ```
 
-TF-IDF is a step-up from BoW as it recognizes what makes a word important in a document. However, similar to BoW, it also disregards the order and context of words. Thus, we need some alternatives that can compute an even better representation for words.
+TF-IDF is a step up from BoW as it recognizes what makes a word important in a document. However, similar to BoW, it also disregards the order and context of words. Thus, we need some alternatives that can compute an even better representation for words.
 
-### Word Embeddings
+## Word Embeddings
 
 This is where word embeddings come into play. Contrary to traditional methods, word embeddings encode words in vector forms (from Linear Algebra!). Through vector representations, they can encapsulate the relationships between words by showing their similarity numerically. Mathematically, the similarity in words is measured by how close the embeddings are in the vector space. @fig-embedding shows an example of visualizing word embeddings in a 2-dimensional space. As you can see, words that are similar in meaning or context are clustered together. This is the art of word embeddings!
 
 ![Visualization of word embeddings (Source: Ruben Winastwan)](wordembedding.png){#fig-embedding}
 
-#### **Word2Vec**
+### Word2Vec
 One common tool to obtain word embeddings is Word2Vec [@mikolov2013efficient]. It computes the embeddings by leveraging the architecture of two-layer neural networks. There are two approaches that Word2Vec uses to obtain these embeddings.
 
 **Continuous BoW (CBoW)**  
@@ -166,7 +164,7 @@ Skipgram is the complete opposite of CBoW. Instead of predicting the missing wor
 
 After multiple iterations in the training process, Word2Vec will use the learned weights in the neural network from either of the approaches to construct the word embeddings for each word. 
 
-Applying Word2Vec in Python [@van1995python] is made possible with the package `Gensim` [@rehurek2011gensim]. As seen in @lst-gensim, `Gensim`'s `Word2Vec` takes in a list of lists to generate the word embeddings. Note that the `sg` argument in the function lets you choose between CBoW and skipgram, where 0 and 1 corresponds to CBoW and skipgram respectively. The argument `min_count` tells the model to ignore words that have a fewer count than this minimum. After training `Word2Vec` on our sample text, we can take a quick look into how word embeddings look like for the word 'technology' in @lst-gensim. 
+Applying Word2Vec in Python is made possible with the package `Gensim` [@rehurek2011gensim]. As seen in @lst-gensim, `Gensim`'s `Word2Vec` takes in a list of lists to generate the word embeddings. Note that the `sg` argument in the function lets you choose between CBoW and skipgram, where 0 and 1 correspond to CBoW and skipgram respectively. The argument `min_count` tells the model to ignore words that have a lower count than this minimum. After training `Word2Vec` on our sample text, we can take a quick look into what word embeddings look like for the word 'technology' in @lst-gensim. 
 
 ```{python}
 #| lst-label: lst-gensim
@@ -195,7 +193,7 @@ print(w2v.wv['technology'])
 
 As it turns out, the word embedding for 'technology' is a high-dimensional vector. However, the values are much more ambiguous than the previous representations we have learned earlier. Let's try to translate these embeddings into more comprehensible results. 
 
-As mentioned before, word embeddings are powerful at capturing similarities in words. We are putting this to test in @lst-similarity, where we ask `Word2Vec` what the most similar word to 'technology' is. The result shows that 'advancement' is the closest word choice. This is a reasonable pick since we often use the phrase 'technological advancement' when describing new technological milestones.
+As mentioned before, word embeddings are powerful at capturing similarities in words. We are putting this to the test in @lst-similarity, where we ask `Word2Vec` what the most similar word to 'technology' is. The result shows that 'advancement' is the closest word choice. This is a reasonable pick since we often use the phrase 'technological advancement' when describing new technological milestones.
 
 ```{python}
 #| lst-label: lst-similarity
@@ -203,9 +201,80 @@ As mentioned before, word embeddings are powerful at capturing similarities in w
 print(w2v.wv.most_similar('technology')[0])
 ```
 
-Word embedding is a big improvement from traditional methods. Nevertheless, it still has flaws such as failing to recognize unknown words. Since Word2Vec is a pre-trained model, its linguistic knowledge mainly bases on the data corpus it was trained on. Unfortunately, language changes over time as new words continue to pop up in dictionaries every year. Thus, it is only a matter of time that Word2Vec will become outdated. Another limitation of Word2Vec is that it struggles to differentiate between words with multiple meanings. Since Word2Vec generates a word embedding for each unique word, it fails to acknowledge that a word can carry separate meanings. This can be problematic especially when words can have exact opposite meanings given different contexts.
+Word2Vec is a big improvement from traditional methods. Nevertheless, it still has flaws such as failing to recognize unknown words. Since Word2Vec is a pre-trained model, its linguistic knowledge is mainly based on the data corpus it was trained on. Unfortunately, language changes over time as new words continue to pop up in dictionaries every year. Thus, it is only a matter of time before Word2Vec becomes outdated. Another limitation of Word2Vec is its struggle to differentiate between words with multiple meanings. Since Word2Vec generates a word embedding for each unique word, it fails to acknowledge that a word can carry separate meanings. This can be problematic especially when words can have exact opposite meanings given different contexts.
 
-### Contextualized Embeddings
+## Contextualized Embeddings
 
-Similar to word embeddings, contextualized embeddings also encode texts into high-dimensional vectors. 
+Similar to word embeddings, contextualized embeddings also encode texts into high-dimensional vectors. They refine the existing framework of word embeddings by conditioning each word on its context. When obtaining the contextualized embeddings of a word, it includes neighboring words in the calculation. As such, the same words that appear in different contexts will have different embeddings. This provides a solution to the limitations of word embeddings as it learns the word based on the context surrounding it.  
+
+While there are several architectures, such as ELMo and GPT-2, that are trained on obtaining contextualized embeddings, we will be focusing on learning the BERT model in this section. 
+
+![Bert from Sesame Street. Coincidentally, the popular contextualized embeddings are conveniently named as Sesame Street characters (Source: Sesame Street)](bertsesame.jpeg)
+
+
+### BERT
+
+BERT [@devlin2019bertpretrainingdeepbidirectional], which stands for Bidirectional encoder representations from transformers, is a transformer-based encoder model developed in 2018 by researchers at Google [@Devlin_Chang_2018]. 
+
+It is bidirectional in the sense that it captures both the left and right contexts of a given word. For example, consider the sentence *"You exist in the context of all in which you live"* and the target word *"context"*. The bidirectional nature of BERT ensures that both the left context, *"You exist in the"*, and the right context, *"of all in which you live"*, are taken into account. 
+
+Transformer [@vaswani2017attention], in this context, is a deep-learning architecture that revolutionalizes the field of NLP through its emphasis on contextualized representations. Its usage ranges from language translations to text generations. As shown in @fig-transformer, a transformer is powered by two separate mechanisms: an encoder system that reads an input text and produces a corresponding vector representation, and a decoder system that receives the vector representation and output sentences that are useful in tasks like text generation [@Hoque_2024]. Despite BERT being a transformer-based model, it differs from a typical transformer as BERT only leverages the encoder mechanism of transformers since its goal is to create contextualized embeddings.
+
+![An oversimplified visualization of the encoder-decoder mechanism of a transformer. (Source: KiKaBeN)](transformer.png){#fig-transformer}
+
+To implement BERT in Python, we enlist the help of the Hugging Face library [@wolf2020huggingfacestransformersstateoftheartnatural]. This implementation requires the packages `transformers` and `torch`. To install both packages, use the commands `pip install transformers` and `pip install torch` respectively.
+
+Before producing BERT embeddings, we have to tokenize the input text with `BertTokenizer` in @lst-token. Tokenization is a process where we break down a text into smaller chunks, similar to extracting individual words from sentences. However, tokenization does not necessarily return a list of words as it aims to deconstruct texts in a way that facilitates the embedding computations. From the result of @lst-token, we see that `BertTokenizer` generates 33 tokens from the input text and the character or word each token represents.
+
+```{python}
+#| lst-label: lst-token
+#| lst-cap: This code shows how BERT tokenization works. 
+from transformers import BertTokenizer, BertModel
+import torch
+
+# Load pre-trained BERT tokenizer
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+
+# Generated by ChatGPT
+text = "Artificial intelligence is revolutionizing industries, making processes faster and more efficient. Despite its rapid advancements, human creativity and empathy remain irreplaceable."
+
+# Tokenize the input text
+inputs = tokenizer(text, return_tensors='pt', truncation=True, padding=True)
+tokens = inputs['input_ids'][0]
+
+# Tokenization results
+print(f'Number of tokens generated: {tokens.shape[0]}')
+print(tokenizer.convert_ids_to_tokens(tokens.numpy()))
+```
+
+In @lst-bert, we input the tokens into the pre-trained `BertModel` and return the BERT embedding for the token 'artificial'. The resulting BERT embedding for 'artificial' is a 768-dimensional vector.
+
+```{python}
+#| lst-label: lst-bert
+#| lst-cap: This code shows how we compute BERT embeddings. 
+
+# Load pre-trained BERT model
+model = BertModel.from_pretrained('bert-base-uncased')
+
+# Get the embeddings from the BERT model
+with torch.no_grad():
+    outputs = model(**inputs)
+
+# Extract embeddings
+token_embeddings = outputs.last_hidden_state[0]
+
+# Token embeddings shape: (number of tokens in input, embedding dimension)
+print(f"Token: {tokenizer.convert_ids_to_tokens(tokens.numpy())[1]}")
+print(f"Embedding shape: {token_embeddings[1].shape}")
+print(f"First 10 values in the embedding: {token_embeddings[1][:10]}")
+```
+
+If you have followed the demonstration above, you might have noticed the significant time and size the pre-trained model takes when initially loaded. The heavy computational cost is a noticeable drawback of BERT. If you aim to train an NLP model on simple textual data while preserving efficiency, the previously introduced models will be a better choice to encode the data. 
+
+## Conclusion
+
+Encoding text into numbers is a foundational step in NLP. The choice of encoding method, whether it is simple approaches like Bag of Words or advanced contextual embeddings like BERT, significantly impacts the performance and outcomes of NLP tasks. Each method has its strengths and limitations. Thus, the selection process of text encoders is crucial to achieving the desired results.
+
+The methods introduced in this blog are just the tip of the iceberg. As the field of NLP continues to evolve, discoveries and advancements in NLP are inevitable. Thus, I encourage you to experiment with different encoding techniques and enrich your NLP experience. Whether you are building a sentiment analysis tool, a recommendation system, or a machine translation model, exploring and adapting encoding strategies to suit your project's unique requirements is key to success. By understanding the power of numerical representations, you can unlock the full potential of NLP and create solutions that bridge the gap between human language and machine understanding.
+
 ## References

@@ -1,8 +1,9 @@
 project:
   type: website
+  output-dir: docs
 
 website:
-  title: "A Guide to Encoding Texts for Natural Language Processing"
+  title: "Adrian Leung's Blog"
   navbar:
     right:
       - about.qmd
@@ -12,7 +13,7 @@ website:
         href: https://twitter.com
 format:
   html:
-    theme: cosmo
+    theme: litera
     css: styles.css
 
 
