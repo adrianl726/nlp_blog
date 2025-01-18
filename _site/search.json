@@ -1,0 +1,58 @@
+[
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "This is a post with executable code."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Welcome to my blog! Hope you like it here."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Adrian’s Blog",
+    "section": "",
+    "text": "A Guide to Encoding Texts for Natural Language Processing\n\n\n\n\n\n\ntutorial\n\n\n\n\n\n\n\n\n\nJan 17, 2025\n\n\nAdrian Leung\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nJan 14, 2025\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/nlp/index.html",
+    "href": "posts/nlp/index.html",
+    "title": "A Guide to Encoding Texts for Natural Language Processing",
+    "section": "",
+    "text": "Source: Google"
+  },
+  {
+    "objectID": "posts/nlp/index.html#introduction",
+    "href": "posts/nlp/index.html#introduction",
+    "title": "A Guide to Encoding Texts for Natural Language Processing",
+    "section": "Introduction",
+    "text": "Introduction\nNatural Language Processing (NLP) is a fascinating field of Machine Learning that focuses on enabling machines to understand, interpret, and generate human language. From facilitating translation tools like Google Translate to powering voice assistance like Siri and Alexa, NLP’s influence on the current technological landascape is indisputable and substantial. With the ever growing interest and expanding development in artificial intelligence, a lot of aspiring engineers and scientists are looking to venture into the lucrative NLP field. However, before we learn to perform all the fancy tasks such as text generations and summarizations, we must start from the fundamentals and ask ourselves a question:\nHow can we bridge the gap between human communication and machine processing?\nOne problem arises from this question is that computers do not understand language the way humans do. They are not wired to comprehend words and write essays like we do. Instead, they operate on numbers. All the NLP models are driven by mathematical algorithms and formulae. Thus, encoding text into numerical representations becomes the key to computers learning human language. By converting words, sentences, or entire documents into numbers, NLP models can perform a wide range of tasks like analyzing patterns, extracting meanings, and generating responses.\nThis blog will introduce and guide you through different methods and tools to encode texts, thus providing you a gateway to using NLP models."
+  },
+  {
+    "objectID": "posts/nlp/index.html#challenges",
+    "href": "posts/nlp/index.html#challenges",
+    "title": "A Guide to Encoding Texts for Natural Language Processing",
+    "section": "Challenges",
+    "text": "Challenges\nBefore we learn about different ways to encode texts, we need to acknowledge the challenges associated with the intricacy of human language. Language is messy and unpredictable. Although there are sets of grammatical rules that govern a language, humans are prone to making mistakes yet still able to convey their messages. For example, “How is you doin” is grammatically incorrect but we know it means “How are you doing”. Thus, language is not strictly restricted by an algorithm, contrary to how computers operate.\nMoreover, not all words have meanings. Auxiliary verbs like “is” and “am” do not contribute or change the message a sentence wants to convey. They are meaningless outside of abiding by grammatical rules. There is also a hierarchy of meanings in a sentence. Certain words can mean more than others. Consider the sentence “We are happy”. Although “we” and “happy” play their roles in conveying our emotions, “happy” is a more important word as it tells the key emotion.\nTo complicate matters more, a word can have different meanings depending on the context. Even more confusingly, some words can have completely opposite meanings. For example, the word “left” in the sentence “We just left” means departed. However, it means staying when the sentence is “We are the only one left”. This shows that contexts can alter meanings of the same word drastically.\n\n\n\n\nContext matters!!! (Source: Kamala Harris)\n\n\n\nHence, making computers comprehend language like we do is far from a simple task. Encoding words with numerical representations is a work of art as it determines how well a model can understand us."
+  },
+  {
+    "objectID": "posts/nlp/index.html#approaches-to-text-encoding",
+    "href": "posts/nlp/index.html#approaches-to-text-encoding",
+    "title": "A Guide to Encoding Texts for Natural Language Processing",
+    "section": "Approaches to Text Encoding",
+    "text": "Approaches to Text Encoding\nThis section will introduce different approaches to encoding texts including traditional methods like Bag-of-Words (BoW) and TF-IDF, word-level embeddings, contextualized embeddings, and sentence-level and document-level representations.\n\nTraditional Methods\n\nBag-of-Words (BoW)"
+  }
+]

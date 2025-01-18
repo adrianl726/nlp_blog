@@ -1,5 +1,5 @@
 ---
-title: "A Guide to Encoding Texts for Natural Language Processing"
+title: "Adrian's Blog"
 listing:
   contents: posts
   sort: "date desc"

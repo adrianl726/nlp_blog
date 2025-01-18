@@ -1,0 +1,40 @@
+---
+title: "A Guide to Encoding Texts for Natural Language Processing"
+author: "Adrian Leung"
+date: "2025-01-17"
+categories: [tutorial]
+---
+
+![Source: Google](nlp.png)
+
+## Introduction
+
+Natural Language Processing (NLP) is a fascinating field of Machine Learning that focuses on enabling machines to understand, interpret, and generate human language. From facilitating translation tools like Google Translate to powering voice assistance like Siri and Alexa, NLP's influence on the current technological landascape is indisputable and substantial. With the ever growing interest and expanding development in artificial intelligence, a lot of aspiring engineers and scientists are looking to venture into the lucrative NLP field. However, before we learn to perform all the fancy tasks such as text generations and summarizations, we must start from the fundamentals and ask ourselves a question:  
+
+**How can we bridge the gap between human communication and machine processing?**
+
+One problem arises from this question is that computers do not understand language the way humans do. They are not wired to comprehend words and write essays like we do. Instead, they operate on numbers. All the NLP models are driven by mathematical algorithms and formulae. Thus, encoding text into numerical representations becomes the key to computers learning human language. By converting words, sentences, or entire documents into numbers, NLP models can perform a wide range of tasks like analyzing patterns, extracting meanings, and generating responses. 
+
+This blog will introduce and guide you through different methods and tools to encode texts, thus providing you a gateway to using NLP models.
+
+## Challenges
+
+Before we learn about different ways to encode texts, we need to acknowledge the challenges associated with the intricacy of human language. Language is messy and unpredictable. Although there are sets of grammatical rules that govern a language, humans are prone to making mistakes yet still able to convey their messages. For example, "How is you doin" is grammatically incorrect but we know it means "How are you doing". Thus, language is not strictly restricted by an algorithm, contrary to how computers operate.
+
+Moreover, not all words have meanings. Auxiliary verbs like "is" and "am" do not contribute or change the message a sentence wants to convey. They are meaningless outside of abiding by grammatical rules. There is also a hierarchy of meanings in a sentence. Certain words can mean more than others. Consider the sentence "We are happy". Although "we" and "happy" play their roles in conveying our emotions, "happy" is a more important word as it tells the key emotion. 
+
+To complicate matters more, a word can have different meanings depending on the context. Even more confusingly, some words can have completely opposite meanings. For example, the word "left" in the sentence "We just left" means departed. However, it means staying when the sentence is "We are the only one left". This shows that contexts can alter meanings of the same word drastically.
+
+::: {style="text-align:center;"}
+![Context matters!!! (Source: Kamala Harris)](context.gif)
+:::
+
+Hence, making computers comprehend language like we do is far from a simple task. Encoding words with numerical representations is a work of art as it determines how well a model can understand us. 
+
+## Approaches to Text Encoding
+
+This section will introduce different approaches to encoding texts including traditional methods like Bag-of-Words (BoW) and TF-IDF, word-level embeddings, contextualized embeddings, and sentence-level and document-level representations.
+
+### Traditional Methods
+
+#### Bag-of-Words (BoW)
