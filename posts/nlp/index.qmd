@@ -268,6 +268,7 @@ print(f"Embedding shape: {token_embeddings[1].shape}")
 print(f"First 10 values in the embedding: {token_embeddings[1][:10]}")
 ```
 
+
 If you have followed the demonstration above, you might have noticed the significant time and size the pre-trained model takes when initially loaded. The heavy computational cost is a noticeable drawback of BERT. If you aim to train an NLP model on simple textual data while preserving efficiency, the previously introduced models will be a better choice to encode the data. 
 
 ## Conclusion
