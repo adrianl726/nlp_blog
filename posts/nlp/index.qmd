@@ -3,6 +3,10 @@ title: "A Guide to Encoding Texts for Natural Language Processing"
 author: "Adrian Leung"
 date: "2025-01-17"
 categories: [tutorial]
+tbl-cap-location: bottom
+embed-resources: true
+bibliography: references.bib
+csl: diabetologia.csl
 ---
 
 ![Source: Google](nlp.png)
@@ -17,7 +21,7 @@ One problem arises from this question is that computers do not understand langua
 
 This blog will introduce and guide you through different methods and tools to encode texts, thus providing you a gateway to using NLP models.
 
-## Challenges
+## Challenges of Textual Data
 
 Before we learn about different ways to encode texts, we need to acknowledge the challenges associated with the intricacy of human language. Language is messy and unpredictable. Although there are sets of grammatical rules that govern a language, humans are prone to making mistakes yet still able to convey their messages. For example, "How is you doin" is grammatically incorrect but we know it means "How are you doing". Thus, language is not strictly restricted by an algorithm, contrary to how computers operate.
 
@@ -31,10 +35,177 @@ To complicate matters more, a word can have different meanings depending on the 
 
 Hence, making computers comprehend language like we do is far from a simple task. Encoding words with numerical representations is a work of art as it determines how well a model can understand us. 
 
-## Approaches to Text Encoding
+## Approaches to Encoding Texts
 
-This section will introduce different approaches to encoding texts including traditional methods like Bag-of-Words (BoW) and TF-IDF, word-level embeddings, contextualized embeddings, and sentence-level and document-level representations.
+This section will cover different approaches to encoding texts including traditional methods like Bag-of-Words (BoW) and TF-IDF, word embeddings, and contextualized embeddings. 
 
 ### Traditional Methods
 
-#### Bag-of-Words (BoW)
+#### **Bag-of-Words (BoW)**
+BoW is one of the most popular encoding methods. It encodes each unique word from all input documents with a number based on their count or presence in their respective document.
+
+Consider the example below:
+
+Unique words in all documents:
+**['the', 'bird', 'is', 'cat', 'and', 'dog', 'hate', 'each', 'no', 'other']**
+
+And we pick one of the documents for our first BoW representation as below.  
+
+Document: **"The cat and the cat hate each other."**
+
+In the case of encoding each word with its count, the BoW model will transform the document to the representation in @tbl-boWcount. Since we have two 'the' and 'cat' in the document above, the numerical representations for 'the' and 'cat' in this document are 2.
+
+|the|bird|is |cat|and|dog|hate|each|no |other|
+|:-:|:--:|:-:|:-:|:-:|:-:|:--:|:--:|:-:|:---:|
+| 2 | 0  | 0 | 2 | 1 | 0 | 1  |  1 | 0 |  1  |
+
+: BoW representations using word counts {#tbl-boWcount}
+
+And in the case of measuring each word by its presence as seen in @tbl-boWbinary, BoW uses binary values 0 and 1 to represent each word, where 0 implies absence and 1 implies presence. Note that the words 'the' and 'cat' are represented by 1 instead of 2 since we are using binary representations.
+
+|the|bird|is |cat|and|dog|hate|each|no |other|
+|:-:|:--:|:-:|:-:|:-:|:-:|:--:|:--:|:-:|:---:|
+| 1 | 0  | 0 | 1 | 1 | 0 | 1  |  1 | 0 |  1  |
+
+: BoW representations using binary indicators {#tbl-boWbinary}
+
+To extract BoW representations in Python [@van1995python], we can leverage the `CountVectorizer` function from the `scikit-learn` package [@scikit-learn]. @tbl-sklearn demonstrates using `CountVectorizer` for BoW extraction by word count with the same example. 
+
+```{python}
+#| label: tbl-sklearn
+#| tbl-cap: BoW results from CountVectorizer
+import pandas as pd
+from sklearn.feature_extraction.text import CountVectorizer
+
+# Using above example
+documents = [
+    'The cat and the cat hate each other.',
+    'The dog is the bird.',
+    'No, the bird and cat hate other dog.'
+]
+
+bow = CountVectorizer()
+X = bow.fit_transform(documents)
+bow_df = pd.DataFrame(
+    X.toarray(), columns=bow.get_feature_names_out(), index=documents
+)
+bow_df
+```
+
+Although the BoW method is as intuitive and self-explanatory as it seems, it is far from a perfect model as it discards the word order in the original document. It disregards how words can form meaningful word phrases and change their meanings with respect to the context.
+
+#### **TF-IDF**
+TF-IDF, which stands for term frequency-inverse document frequency, is another popular method to encode text. It is a measure of relevance of a word in a document. The computation can be broken down into two parts: term frequency and inverse document frequency.
+
+**Term Frequency (TF)**  
+The term frequency is the count of a given word $w$ in a given document $d$, divided by the total number of words in document $d$. 
+
+$$TF = \frac{\text{Number of word $w$ in document $d$}}{\text{Total number of words in document $d$}}$$
+
+**Inverse document frequency (IDF)**  
+The inverse document frequency is to penalize words that are too common across all documents. For example, auxiliary verbs like 'is' are weighed less as the result. In return, this gives rise to rarer words that possibly carry more meaning and importance. 
+
+$$IDF = \log\left(\frac{\text{Total number of documents}}{\text{Number of documents containing word $w$}}\right)$$
+
+**Combining both TF and IDF**  
+To have our TF-IDF representation, we multiply both terms to have the following formula:
+
+$$TF\text{-}IDF = TF \times IDF$$
+
+Now, let's revisit our example with TF-IDF in Python [@van1995python]. Luckily, the `scikit-learn` package [@scikit-learn] also has a function for TF-IDF called `TfidfVectorizer`. As shown in the first row in @tbl-tfidf, the TF-IDF representation for 'the' is smaller than 'cat' even though they both have the same BoW representations in @tbl-sklearn. This is the result of the compensation from IDF as 'the' appears too much across documents. 
+
+```{python}
+#| label: tbl-tfidf
+#| tbl-cap: TF-IDF results from TfidfVectorizer
+import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+# Using the same example
+documents = [
+    'The cat and the cat hate each other.',
+    'The dog is the bird.',
+    'No, the bird and cat hate other dog.'
+]
+
+tfidf = TfidfVectorizer()
+X = tfidf.fit_transform(documents)
+tfidf_df = pd.DataFrame(
+    X.toarray(), columns=tfidf.get_feature_names_out().tolist(), index=documents
+)
+tfidf_df
+```
+
+TF-IDF is a step-up from BoW as it recognizes what makes a word important in a document. However, similar to BoW, it also disregards the order and context of words. Thus, we need some alternatives that can compute an even better representation for words.
+
+### Word Embeddings
+
+This is where word embeddings come into play. Contrary to traditional methods, word embeddings encode words in vector forms (from Linear Algebra!). Through vector representations, they can encapsulate the relationships between words by showing their similarity numerically. Mathematically, the similarity in words is measured by how close the embeddings are in the vector space. @fig-embedding shows an example of visualizing word embeddings in a 2-dimensional space. As you can see, words that are similar in meaning or context are clustered together. This is the art of word embeddings!
+
+![Visualization of word embeddings (Source: Ruben Winastwan)](wordembedding.png){#fig-embedding}
+
+#### **Word2Vec**
+One common tool to obtain word embeddings is Word2Vec [@mikolov2013efficient]. It computes the embeddings by leveraging the architecture of two-layer neural networks. There are two approaches that Word2Vec uses to obtain these embeddings.
+
+**Continuous BoW (CBoW)**  
+
+CBoW is a prediction algorithm where the neural network aims to predict a target word based on the existing context in a document. Simply put, this is analogous to filling in the blank in a sentence. 
+
+Consider the sentence *"My cute puppy is barking"*. The model will iterate over this sentence and remove one word from each iteration. For example, as shown in @fig-cbow, the model omits the word *'puppy'* from the sentence and trains the neural network to guess the word *'puppy'* from the remaining sentence.
+
+::: {style="text-align:center;"}
+![Illustration of CBoW algorithm](cbow.jpeg){#fig-cbow}
+:::
+
+**Skipgram**
+
+Skipgram is the complete opposite of CBoW. Instead of predicting the missing word from a given context, skipgram predicts the surrounding context from a given word. Using the same example, as shown in @fig-skipgram, the model will try to guess the surrounding words to the word *'puppy'*.
+
+::: {style="text-align:center;"}
+![Illustration of Skipgram algorithm](skipgram.jpeg){#fig-skipgram}
+:::
+
+After multiple iterations in the training process, Word2Vec will use the learned weights in the neural network from either of the approaches to construct the word embeddings for each word. 
+
+Applying Word2Vec in Python [@van1995python] is made possible with the package `Gensim` [@rehurek2011gensim]. As seen in @lst-gensim, `Gensim`'s `Word2Vec` takes in a list of lists to generate the word embeddings. Note that the `sg` argument in the function lets you choose between CBoW and skipgram, where 0 and 1 corresponds to CBoW and skipgram respectively. The argument `min_count` tells the model to ignore words that have a fewer count than this minimum. After training `Word2Vec` on our sample text, we can take a quick look into how word embeddings look like for the word 'technology' in @lst-gensim. 
+
+```{python}
+#| lst-label: lst-gensim
+#| lst-cap: This code demonstrates extracting word embedding from the word 'technology'
+import pandas as pd
+from gensim.models import Word2Vec
+# Generated by ChatGPT
+sample_text = [
+    "The advancement of technology has transformed the way we communicate and interact with the world.",
+    "Artificial intelligence is increasingly being used in healthcare, education, and other industries to enhance efficiency.",
+    "People often gather in coffee shops to discuss ideas, share stories, and enjoy a sense of community.",
+    "Self-driving cars and smart home devices are examples of how technology is becoming a part of our everyday lives.",
+    "Art galleries and cultural festivals are popular spots for people to explore creativity and connect with others.",
+    "The integration of AI in the workplace has sparked debates about its impact on jobs and productivity.",
+    "Reading books and attending literary events remain cherished activities in the digital age.",
+    "Many cities are blending technology with traditional practices to create unique and thriving environments.",
+    "The use of virtual reality in gaming and training has opened new possibilities for immersive experiences.",
+    "Social media platforms have changed the way we form relationships and share information globally."
+]
+# This generates a list of lists
+sample_sentences = [sent.split() for sent in sample_text]
+
+w2v = Word2Vec(sample_sentences, min_count = 1, sg = 1)
+print(w2v.wv['technology'])
+```
+
+As it turns out, the word embedding for 'technology' is a high-dimensional vector. However, the values are much more ambiguous than the previous representations we have learned earlier. Let's try to translate these embeddings into more comprehensible results. 
+
+As mentioned before, word embeddings are powerful at capturing similarities in words. We are putting this to test in @lst-similarity, where we ask `Word2Vec` what the most similar word to 'technology' is. The result shows that 'advancement' is the closest word choice. This is a reasonable pick since we often use the phrase 'technological advancement' when describing new technological milestones.
+
+```{python}
+#| lst-label: lst-similarity
+#| lst-cap: This code shows what Word2Vec thinks the most similar word to 'technology' is. 
+print(w2v.wv.most_similar('technology')[0])
+```
+
+Word embedding is a big improvement from traditional methods. Nevertheless, it still has flaws such as failing to recognize unknown words. Since Word2Vec is a pre-trained model, its linguistic knowledge mainly bases on the data corpus it was trained on. Unfortunately, language changes over time as new words continue to pop up in dictionaries every year. Thus, it is only a matter of time that Word2Vec will become outdated. Another limitation of Word2Vec is that it struggles to differentiate between words with multiple meanings. Since Word2Vec generates a word embedding for each unique word, it fails to acknowledge that a word can carry separate meanings. This can be problematic especially when words can have exact opposite meanings given different contexts.
+
+### Contextualized Embeddings
+
+Similar to word embeddings, contextualized embeddings also encode texts into high-dimensional vectors. 
+## References
