@@ -4,12 +4,11 @@ author: "Adrian Leung"
 date: "2025-01-17"
 categories: [tutorial]
 tbl-cap-location: bottom
-embed-resources: true
 bibliography: references.bib
 csl: diabetologia.csl
 ---
 
-![Source: Google](nlp.png)
+![Source: Google](thumbnail.png)
 
 ## Introduction
 
