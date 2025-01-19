@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -203,6 +203,7 @@ window.Quarto = {
       <h1 class="title">A Guide to Encoding Texts for Natural Language Processing</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">tutorial</div>
+                <div class="quarto-category">explanation</div>
               </div>
                   </div>
   </div>
@@ -357,7 +358,7 @@ Table&nbsp;2: BoW representations using binary indicators
 </figcaption>
 </figure>
 </div>
-<p>To extract BoW representations in Python <span class="citation" data-cites="van1995python">[<a href="#ref-van1995python" role="doc-biblioref">1</a>]</span>, we can leverage the <code>CountVectorizer</code> function from the <code>scikit-learn</code> package <span class="citation" data-cites="scikit-learn">[<a href="#ref-scikit-learn" role="doc-biblioref">2</a>]</span>. <a href="#tbl-sklearn" class="quarto-xref">Table&nbsp;3</a> demonstrates using <code>CountVectorizer</code> for BoW extraction by word count with the same example.</p>
+<p>To extract BoW representations in Python <span class="citation" data-cites="van1995python">[<a href="#ref-van1995python" role="doc-biblioref">1</a>]</span>, we can leverage the <code>CountVectorizer</code> function from the <code>scikit-learn</code> package <span class="citation" data-cites="scikit-learn">[<a href="#ref-scikit-learn" role="doc-biblioref">2</a>]</span>. <a href="#tbl-sklearn" class="quarto-xref">Table&nbsp;3</a> demonstrates using <code>CountVectorizer</code> for BoW extraction by word count with the same example. To install <code>scikit-learn</code>, use the command <code>conda install scikit-learn</code> in your environment.</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> CountVectorizer</span>
@@ -606,8 +607,9 @@ Figure&nbsp;3: Illustration of Skipgram algorithm
 </div>
 </div>
 <p>After multiple iterations in the training process, Word2Vec will use the learned weights in the neural network from either of the approaches to construct the word embeddings for each word.</p>
-<p>Applying Word2Vec in Python is made possible with the package <code>Gensim</code> <span class="citation" data-cites="rehurek2011gensim">[<a href="#ref-rehurek2011gensim" role="doc-biblioref">4</a>]</span>. As seen in <a href="#lst-gensim" class="quarto-xref">Listing&nbsp;1</a>, <code>Gensim</code>‘s <code>Word2Vec</code> takes in a list of lists to generate the word embeddings. Note that the <code>sg</code> argument in the function lets you choose between CBoW and skipgram, where 0 and 1 correspond to CBoW and skipgram respectively. The argument <code>min_count</code> tells the model to ignore words that have a lower count than this minimum. After training <code>Word2Vec</code> on our sample text, we can take a quick look into what word embeddings look like for the word ’technology’ in <a href="#lst-gensim" class="quarto-xref">Listing&nbsp;1</a>.</p>
-<div id="91d8aa50" class="cell" data-execution_count="3">
+<p>Applying Word2Vec in Python is made possible with the package <code>Gensim</code> <span class="citation" data-cites="rehurek2011gensim">[<a href="#ref-rehurek2011gensim" role="doc-biblioref">4</a>]</span>. To install the latest version of <code>Gensim</code>, use the command <code>pip install --upgrade gensim</code> in your environment.</p>
+<p>As seen in <a href="#lst-gensim" class="quarto-xref">Listing&nbsp;1</a>, <code>Gensim</code>‘s <code>Word2Vec</code> takes in a list of lists to generate the word embeddings. Note that the <code>sg</code> argument in the function lets you choose between CBoW and skipgram, where 0 and 1 correspond to CBoW and skipgram respectively. The argument <code>min_count</code> tells the model to ignore words that have a lower count than this minimum. After training <code>Word2Vec</code> on our sample text, we can take a quick look into what word embeddings look like for the word ’technology’ in <a href="#lst-gensim" class="quarto-xref">Listing&nbsp;1</a>.</p>
+<div id="8607dac8" class="cell" data-execution_count="3">
 <div id="lst-gensim" class="python cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-gensim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -667,7 +669,7 @@ Listing&nbsp;1: This code demonstrates extracting word embedding from the word �
 </div>
 <p>As it turns out, the word embedding for ‘technology’ is a high-dimensional vector. However, the values are much more ambiguous than the previous representations we have learned earlier. Let’s try to translate these embeddings into more comprehensible results.</p>
 <p>As mentioned before, word embeddings are powerful at capturing similarities in words. We are putting this to the test in <a href="#lst-similarity" class="quarto-xref">Listing&nbsp;2</a>, where we ask <code>Word2Vec</code> what the most similar word to ‘technology’ is. The result shows that ‘advancement’ is the closest word choice. This is a reasonable pick since we often use the phrase ‘technological advancement’ when describing new technological milestones.</p>
-<div id="dfc303bc" class="cell" data-execution_count="4">
+<div id="bd6bba36" class="cell" data-execution_count="4">
 <div id="lst-similarity" class="python cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-similarity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -712,7 +714,7 @@ Figure&nbsp;4: An oversimplified visualization of the encoder-decoder mechanism 
 </div>
 <p>To implement BERT in Python, we enlist the help of the Hugging Face library <span class="citation" data-cites="wolf2020huggingfacestransformersstateoftheartnatural">[<a href="#ref-wolf2020huggingfacestransformersstateoftheartnatural" role="doc-biblioref">9</a>]</span>. This implementation requires the packages <code>transformers</code> and <code>torch</code>. To install both packages, use the commands <code>pip install transformers</code> and <code>pip install torch</code> respectively.</p>
 <p>Before producing BERT embeddings, we have to tokenize the input text with <code>BertTokenizer</code> in <a href="#lst-token" class="quarto-xref">Listing&nbsp;3</a>. Tokenization is a process where we break down a text into smaller chunks, similar to extracting individual words from sentences. However, tokenization does not necessarily return a list of words as it aims to deconstruct texts in a way that facilitates the embedding computations. From the result of <a href="#lst-token" class="quarto-xref">Listing&nbsp;3</a>, we see that <code>BertTokenizer</code> generates 33 tokens from the input text and the character or word each token represents.</p>
-<div id="23762785" class="cell" data-execution_count="5">
+<div id="67514612" class="cell" data-execution_count="5">
 <div id="lst-token" class="python cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-token-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -744,7 +746,7 @@ Listing&nbsp;3: This code shows how BERT tokenization works.
 </div>
 </div>
 <p>In <a href="#lst-bert" class="quarto-xref">Listing&nbsp;4</a>, we input the tokens into the pre-trained <code>BertModel</code> and return the BERT embedding for the token ‘artificial’. The resulting BERT embedding for ‘artificial’ is a 768-dimensional vector.</p>
-<div id="fa6639b0" class="cell" data-execution_count="6">
+<div id="d77e1212" class="cell" data-execution_count="6">
 <div id="lst-bert" class="python cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-bert-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">

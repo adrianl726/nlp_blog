@@ -68,7 +68,7 @@ In the case of measuring each word by its presence as seen in @tbl-boWbinary, Bo
 
 : BoW representations using binary indicators {#tbl-boWbinary}
 
-To extract BoW representations in Python [@van1995python], we can leverage the `CountVectorizer` function from the `scikit-learn` package [@scikit-learn]. @tbl-sklearn demonstrates using `CountVectorizer` for BoW extraction by word count with the same example. 
+To extract BoW representations in Python [@van1995python], we can leverage the `CountVectorizer` function from the `scikit-learn` package [@scikit-learn]. @tbl-sklearn demonstrates using `CountVectorizer` for BoW extraction by word count with the same example. To install `scikit-learn`, use the command `conda install scikit-learn` in your environment.
 
 ```{python}
 #| label: tbl-sklearn
@@ -165,7 +165,9 @@ Skipgram is the complete opposite of CBoW. Instead of predicting the missing wor
 
 After multiple iterations in the training process, Word2Vec will use the learned weights in the neural network from either of the approaches to construct the word embeddings for each word. 
 
-Applying Word2Vec in Python is made possible with the package `Gensim` [@rehurek2011gensim]. As seen in @lst-gensim, `Gensim`'s `Word2Vec` takes in a list of lists to generate the word embeddings. Note that the `sg` argument in the function lets you choose between CBoW and skipgram, where 0 and 1 correspond to CBoW and skipgram respectively. The argument `min_count` tells the model to ignore words that have a lower count than this minimum. After training `Word2Vec` on our sample text, we can take a quick look into what word embeddings look like for the word 'technology' in @lst-gensim. 
+Applying Word2Vec in Python is made possible with the package `Gensim` [@rehurek2011gensim]. To install the latest version of `Gensim`, use the command `pip install --upgrade gensim` in your environment.
+
+As seen in @lst-gensim, `Gensim`'s `Word2Vec` takes in a list of lists to generate the word embeddings. Note that the `sg` argument in the function lets you choose between CBoW and skipgram, where 0 and 1 correspond to CBoW and skipgram respectively. The argument `min_count` tells the model to ignore words that have a lower count than this minimum. After training `Word2Vec` on our sample text, we can take a quick look into what word embeddings look like for the word 'technology' in @lst-gensim. 
 
 ```{python}
 #| lst-label: lst-gensim
